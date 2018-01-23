@@ -1,3 +1,9 @@
+.page {
+  background-color: #8fa4c6;
+  width: 800px;
+  margin: auto;
+}
+
 .app-title {
   text-align: center;
   margin-bottom: 60px;

@@ -30,7 +30,7 @@ export default class App extends Component {
 
   render() {
     return (<div>
-      <h1 className="app-title">Leadership Board App</h1>
+      <h1 className="app-title">React App</h1>
       <ListOfCampers campers={[this.state]}/>
     </div>);
   }
