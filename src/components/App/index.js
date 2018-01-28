@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 import './style.css';
 import axios from 'axios';
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -9,8 +9,42 @@ export default class App extends Component {
     super(props);
     this.state = {
       recent: [],
-      allTime: []
+      allTime: [],
+      holdRecent: [],
+      sortOrder: 'DESC'
     }
+
+    this.changeSortOrder = this.changeSortOrder.bind(this);
+    this.changeSortOrderAll = this.changeSortOrderAll.bind(this);
+  }
+
+  changeSortOrder() {
+    let {
+      sortOrder,
+      recent,
+      holdRecent
+    } = this.state;
+    sortOrder = sortOrder === 'DESC' ? 'ASC' : 'DESC';
+    recent = holdRecent;
+    recent = recent.reverse();
+    this.setState({
+      sortOrder,
+      recent
+    });
+  }
+
+  changeSortOrderAll() {
+    let {
+      sortOrder,
+      recent,
+      allTime
+    } = this.state;
+    sortOrder = sortOrder === 'DESC' ? 'ASC' : 'DESC';
+    recent = allTime.reverse();
+    this.setState({
+      sortOrder,
+      recent
+    });
   }
 
   getRecentCampers() {
@@ -23,16 +57,28 @@ export default class App extends Component {
 
   componentWillMount() {
     axios.all([this.getRecentCampers(), this.getAllTimeCampers()]).then(axios.spread((recentCampers, allTimeCampers) => {
-      this.setState({recent: recentCampers.data, allTime: allTimeCampers.data});
+      this.setState({
+        recent: recentCampers.data,
+        allTime: allTimeCampers.data,
+        holdRecent: recentCampers.data
+      });
     }));
 
   };
 
   render() {
-    return (<div>
-      <h1 className="app-title">React App</h1>
-      <ListOfCampers campers={[this.state]}/>
-    </div>);
+    return (
+      <div>
+        <h1 className="app-title">React App</h1>
+        <ListOfCampers
+          changeSortOrder={this.changeSortOrder}
+          campers={this.state}
+          sortOrder={this.state.sortOrder}
+          changeSortOrderAll={this.changeSortOrderAll}
+          selected={this.state.selected}
+        />
+      </div>
+    );
   }
 
 };
