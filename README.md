@@ -6,6 +6,4 @@ The there are three columns worth noting:
 - Points in 30 Days
 - All allTime
 
-The users are sorted in descending order.
-
-In the future it will be possible to sort the user list by the both point columns.
+It is possible to sort or all time.
