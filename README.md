@@ -8,4 +8,4 @@ The there are three columns worth noting:
 
 It is possible to sort or all time.
 
-Live demo: https://equable-bamboo.glitch.me/
+Link to live app: https://camper-leader.herokuapp.com/
