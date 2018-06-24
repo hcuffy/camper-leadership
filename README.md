@@ -9,3 +9,8 @@ The there are three columns worth noting:
 It is possible to sort or all time.
 
 Link to live app: https://camper-leader.herokuapp.com/
+<<<<<<< HEAD
+=======
+
+
+>>>>>>> ab7f5f053c909a4155c96225dc9e49371e4f0f92
